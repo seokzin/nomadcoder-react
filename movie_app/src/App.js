@@ -1,61 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const foodILike = [
-  {
-    id: 1,
-    name: "kimchi",
-    price: "5000",
-    rating: 4.5
-  },
-  {
-    id: 2,
-    name: "pizza",
-    price: "10000",
-    rating: 4
-  },
-  {
-    id: 3,
-    name: "kimbap",
-    price: "2000",
-    rating: 5
+class App extends React.Component{
+  constructor(props) {
+    super(props);
+    console.log("hello");
   }
-];
+  
+  state = { // 바꾸고 싶은 data를 넣는다.
+    count: 0
+  };
+  
+  add = () => { // current = this.state 의미
+    this.setState(current => ({ count: current.count + 1 }));
+  };
 
-function renderFood(dish) {
-  return (
-  <Food
-    key={dish.id} 
-    name={dish.name} 
-    price={dish.price} 
-    rating={dish.rating}/>
-   )
-}
+  minus = () => {
+    this.setState(current => ({ count: current.count - 1 }));
+  };
 
-function Food( {name, price, rating } ) {
-  return (
-  <div>
-    <h1>I like {name}</h1>
-    <p>It's {price}W</p>
-    <h4>{rating}/5</h4>
-  </div>
-  );
-}
+  componentDidMount() {
+    console.log("component rendered");
+  }
 
-// 반드시 propTypes로 네이밍 해야 함.
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired
-}
+  componentDidUpdate() {
+    console.log("I just updated");
+  }
 
-function App() {
-  return (
-    <div>
-      <h1>Hello</h1>
-        {foodILike.map(renderFood)}
-    </div>
-  );
+  componentWillUnmount() {
+    console.log("good bye");
+  }
+
+  render() {
+    console.log("render");
+
+    return (
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
