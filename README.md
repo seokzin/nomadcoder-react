@@ -10,5 +10,11 @@ Clone project
 - first release (+ CSS)
 - **gh-pages** - https://seokzin.github.io/nomadcoder-react/
 
+#### v 1.0.1
+- Nav (Home, About)
+- Page (+About, Detail)
+
 ## TO-DO
-- CSS detail upgrade
+- make Form (Detail)
+- CSS detail (ALL)
+- React hooks / React Context API
